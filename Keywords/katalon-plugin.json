@@ -1,0 +1,17 @@
+{
+   "keywords": ["com.kms.katalon.keyword.microsoftteam.MicrosoftTeamUpdate"],
+   "configuration": {
+      "settingId": "MicrosoftTeamUpdate",
+      "settingPage": {
+         "name": "MicrosoftTeamUpdate",
+         "components": [
+            {
+               "key": "MicrosoftTeam URL",
+               "type": "text",
+               "label": "MicrosoftTeam URL",
+               "defaultValue": ""
+            }
+         ]
+      }
+   }
+}

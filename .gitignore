@@ -1,0 +1,23 @@
+.gradle
+
+bin
+
+Drivers
+
+Reports
+
+Libs
+lib
+build
+
+.classpath
+
+.project
+
+.settings
+
+gradlew
+
+gradlew.bat
+Data Files/temp
+settings/external/com.kms.katalon.keyword.MicrosoftTeamUpdate.properties
