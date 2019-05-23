@@ -1,5 +1,6 @@
 {
-   "keywords": ["com.kms.katalon.keyword.microsoftteam.MicrosoftTeamUpdate"],
+   "keywords": [],
+   "listeners": ["MicrosoftTeamTestListener"]
    "configuration": {
       "settingId": "MicrosoftTeamUpdate",
       "settingPage": {

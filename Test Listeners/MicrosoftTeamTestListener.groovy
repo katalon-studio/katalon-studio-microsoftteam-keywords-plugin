@@ -4,7 +4,7 @@ import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.keyword.microsoftteam.MicrosoftTeamUpdate
 
-class SampleListener {
+class MicrosoftTeamTestListener {
 	MicrosoftTeamUpdate microsoftUpdate = new  MicrosoftTeamUpdate()
 	
 	/**
