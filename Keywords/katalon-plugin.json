@@ -1,15 +1,15 @@
 {
    "keywords": [],
-   "listeners": ["MicrosoftTeamTestListener"]
+   "listeners": ["KatalonMicrosoftTeamsTestListener"],
    "configuration": {
-      "settingId": "MicrosoftTeamUpdate",
+      "settingId": "MicrosoftTeamsIncomingWebhook",
       "settingPage": {
-         "name": "MicrosoftTeamUpdate",
+         "name": "Microsoft Teams",
          "components": [
             {
-               "key": "MicrosoftTeam URL",
+               "key": "MicrosoftTeamsIncomingWebhook",
                "type": "text",
-               "label": "MicrosoftTeam URL",
+               "label": "Incoming Webhook",
                "defaultValue": ""
             }
          ]

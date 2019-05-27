@@ -1,4 +1,4 @@
-package com.kms.katalon.keyword.microsoftteam
+package com.kms.katalon.keyword.microsoftteams
 
 import java.util.concurrent.atomic.AtomicInteger
 
@@ -12,7 +12,7 @@ import com.kms.katalon.core.context.TestSuiteContext
 import com.kms.katalon.core.setting.BundleSettingStore
 import com.kms.katalon.core.util.KeywordUtil
 
-public class MicrosoftTeamUpdate {
+public class MicrosoftTeamsUtils {
 
 
 	static BundleSettingStore bundleSetting
@@ -21,10 +21,10 @@ public class MicrosoftTeamUpdate {
 
 	static {
 		try {
-			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'MicrosoftTeamUpdate', true)
-			URL = bundleSetting.getString('MicrosoftTeam URL', '')
+			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'MicrosoftTeamsIncomingWebhook', true)
+			URL = bundleSetting.getString('MicrosoftTeamsIncomingWebhook', '')
 			if (StringUtils.isBlank(URL)) {
-				throw new IllegalStateException("The MicrosoftTeam URL is missing.")
+				throw new IllegalStateException("The Microsoft Teams Incoming Webhook is missing.")
 			}
 		} catch (Exception e) {
 			e.printStackTrace()
@@ -53,9 +53,9 @@ public class MicrosoftTeamUpdate {
 	 * @param testSuiteContext related information of the executed test suite.
 	 */
 	public updateMicrosoftTeam(TestSuiteContext testSuiteContext) {
-		String message = "Summary execution result of test suite: " + testSuiteContext.getTestSuiteId()
+		String message = "Summary execution result of Test Suite: " + testSuiteContext.getTestSuiteId()
 		for (Map.Entry<String, AtomicInteger> entry : stats.entrySet()) {
-			message =  message + "\nTotal testcases: " + entry.getKey() + " is " + entry.getValue() + "."
+			message =  message + "\n\n${entry.getKey()}: ${entry.getValue()}"
 		}
 		MicrosoftTeams.forUrl(new Webhook() {
 					@Override

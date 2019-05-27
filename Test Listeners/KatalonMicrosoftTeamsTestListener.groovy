@@ -2,10 +2,10 @@ import com.kms.katalon.core.annotation.AfterTestCase
 import com.kms.katalon.core.annotation.AfterTestSuite
 import com.kms.katalon.core.context.TestCaseContext
 import com.kms.katalon.core.context.TestSuiteContext
-import com.kms.katalon.keyword.microsoftteam.MicrosoftTeamUpdate
+import com.kms.katalon.keyword.microsoftteams.MicrosoftTeamsUtils
 
-class MicrosoftTeamTestListener {
-	MicrosoftTeamUpdate microsoftUpdate = new  MicrosoftTeamUpdate()
+class KatalonMicrosoftTeamsTestListener {
+	MicrosoftTeamsUtils microsoftUpdate = new  MicrosoftTeamsUtils()
 	
 	/**
 	 * Executes after every test case ends.
