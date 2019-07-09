@@ -19,5 +19,7 @@ build
 gradlew
 
 gradlew.bat
+
 Data Files/temp
-settings/external/com.kms.katalon.keyword.MicrosoftTeamUpdate.properties
+
+settings/external/MicrosoftTeamsIncomingWebhook.properties

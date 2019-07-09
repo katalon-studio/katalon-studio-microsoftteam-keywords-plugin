@@ -2,6 +2,12 @@
 
 ## Develop
 
+Sample `settings/external/MicrosoftTeamsIncomingWebhook.properties`
+
+```
+MicrosoftTeamsIncomingWebhook="https\://outlook.office.com/webhook/<id>/IncomingWebhook/<id>"
+```
+
 ```
 ./gradlew clean katalonCopyDependencies
 ```

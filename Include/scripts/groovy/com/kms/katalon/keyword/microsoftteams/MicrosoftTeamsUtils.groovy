@@ -24,7 +24,7 @@ public class MicrosoftTeamsUtils {
 			bundleSetting = new BundleSettingStore(RunConfiguration.getProjectDir(), 'MicrosoftTeamsIncomingWebhook', true)
 			URL = bundleSetting.getString('MicrosoftTeamsIncomingWebhook', '')
 			if (StringUtils.isBlank(URL)) {
-				throw new IllegalStateException("The Microsoft Teams Incoming Webhook is missing.")
+				KeywordUtil.logInfo("Microsoft Teams Incoming Webhook is empty.")
 			}
 		} catch (Exception e) {
 			e.printStackTrace()
