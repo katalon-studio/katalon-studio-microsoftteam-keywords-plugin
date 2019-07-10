@@ -17,6 +17,8 @@ public class MicrosoftTeamsUtils {
 
 	static BundleSettingStore bundleSetting
 	static String URL
+	static boolean enabled = false
+	
 	Map<String, AtomicInteger> stats = new HashMap<String, AtomicInteger>()
 
 	static {
@@ -25,10 +27,11 @@ public class MicrosoftTeamsUtils {
 			URL = bundleSetting.getString('MicrosoftTeamsIncomingWebhook', '')
 			if (StringUtils.isBlank(URL)) {
 				KeywordUtil.logInfo("Microsoft Teams Incoming Webhook is empty.")
+			} else {
+				enabled = true
 			}
 		} catch (Exception e) {
 			e.printStackTrace()
-			throw e
 		}
 	}
 
@@ -38,13 +41,15 @@ public class MicrosoftTeamsUtils {
 	 * @param testCaseContext related information of the executed test case.
 	 */
 	public getTestcaseStatus (TestCaseContext testCaseContext) {
-		String status = testCaseContext.getTestCaseStatus()
-		AtomicInteger stat = stats.get(status)
-		if (stat == null) {
-			stat = new AtomicInteger(0)
+		if (enabled) {
+			String status = testCaseContext.getTestCaseStatus()
+			AtomicInteger stat = stats.get(status)
+			if (stat == null) {
+				stat = new AtomicInteger(0)
+			}
+			stat.getAndIncrement()
+			stats.put(status, stat)
 		}
-		stat.getAndIncrement()
-		stats.put(status, stat)
 	}
 
 	/**
@@ -53,15 +58,17 @@ public class MicrosoftTeamsUtils {
 	 * @param testSuiteContext related information of the executed test suite.
 	 */
 	public updateMicrosoftTeam(TestSuiteContext testSuiteContext) {
-		String message = "Summary execution result of Test Suite: " + testSuiteContext.getTestSuiteId()
-		for (Map.Entry<String, AtomicInteger> entry : stats.entrySet()) {
-			message =  message + "\n\n${entry.getKey()}: ${entry.getValue()}"
+		if (enabled) {
+			String message = "Summary execution result of Test Suite: " + testSuiteContext.getTestSuiteId()
+			for (Map.Entry<String, AtomicInteger> entry : stats.entrySet()) {
+				message =  message + "\n\n${entry.getKey()}: ${entry.getValue()}"
+			}
+			MicrosoftTeams.forUrl(new Webhook() {
+						@Override
+						public String getUrl() {
+							return URL
+						}
+					}).sendMessage(message)
 		}
-		MicrosoftTeams.forUrl(new Webhook() {
-					@Override
-					public String getUrl() {
-						return URL
-					}
-				}).sendMessage(message)
 	}
 }
